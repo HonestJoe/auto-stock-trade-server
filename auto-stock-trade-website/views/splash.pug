@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', type='text/css', href='stylesheets/splash.css')
+    title="Sign Up | AutoTrade" 
+  body
+    h1(style="font-size:300%;float:right;position:relative;left:-40%;text-align:left") Auto Stock Trader
+    section(style="overflow:hidden")
+      div(style="margin-left:35%;margin-top:10%;padding:1px 16px;width:25%;display:inline-block")
+        h2 Register Here
+        form(action='/register' method='POST')
+          input(type='text', id='fname', name='firstname',placeholder='First Name')
+          input(type='text', id='lname', name='lastname',placeholder='Last Name')
+          input(type='text', id='remail', name='registerEmailAddress',placeholder='Email Address')
+          input(type='password', id='rpass', name='registerPassword',placeholder='Password')
+          input(type='password', id='cpass', name='confirmPassword',placeholder='Confirm password')
+          br
+          input(type='submit', value='Submit')
+      div(style="margin-left:10%;display:inline-block;margin-top:10%;vertical-align:top")
+        h2 Log In
+          form(action='/login', method='POST')
+            input(type='text', id='email', name='email', placeholder='Email Address')
+            input(type='text', id='pass', name='password', placeholder='Password')
+            br
+            input(type='submit', value='Submit')
+          
+        
