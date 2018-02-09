@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    link(rel='stylesheet', type='text/css', href='stylesheets/dash.css')
+    title="Dashboard"
+  body
+    div(class='sidenav')
+      a(href='/dashboard') Dashboard <!--Won't work until backend event is made-->
+      a(href='/') Investments
+      a(href='/') Account
+      a(href='/') Analysis
+      a(href='/') Contact Us
+      a(href='/') Algorithms
+      
+    section(class='content')
+      p You are logged in as #{auth.fname} #{auth.lname} <!--Example of accessing first and last name from session variable-->
