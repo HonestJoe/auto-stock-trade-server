@@ -1,7 +1,7 @@
 doctype html
 html(lang="en")
   head
-    link(rel='stylesheet', type='text/css', href='stylesheets/dash.css')
+    link(rel='stylesheet', type='text/css', href='stylesheets/css/dash.css')
     title="Dashboard"
   body
     div(class='sidenav')
@@ -13,4 +13,4 @@ html(lang="en")
       a(href='/') Algorithms
       
     section(class='content')
-      p You are logged in as #{auth.fname} #{auth.lname} <!--Example of accessing first and last name from session variable-->
+      p You are logged in as <!--#-->{auth.fname} <!--#-->{auth.lname} <!--Example of accessing first and last name from session variable-->

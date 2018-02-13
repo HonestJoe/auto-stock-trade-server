@@ -6,6 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('splash');
 });
 
+router.get("/dashboard", function(req, res){
+  res.render('dashboard')
+})
+
 router.post('/login', function(req, res, next) {
   // This wont actually need to render anything in the future
   // This is really just to make sure it worked.
