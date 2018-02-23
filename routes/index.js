@@ -1,25 +1,24 @@
 var express = require('express');
-
-// ------- mySQL db connection info -------
-// Change for your personal machine
-var mysql = require('mysql');
-var connection = mysql.createPool({
-  connectionLimit: 10,
-  host: 'localhost',
-  user: 'root',
-  password: 'hamandcheese',
-  database: 'autostockdb'
-});
-
-connection.getConnection(function(err, connection) {
-  if(err) {
-    console.log("Error connecting.");
-  } else {
-    console.log("Success.");
-  }
-});
-
 var router = express.Router();
+
+const { Client } = require('pg');
+const client = new Client({
+    connectionString: process.env.DATABASE_URL,
+    ssl: true,
+});
+
+client.connect();
+
+// The following is an example of a query on the database
+// client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+//   if (err) throw err;
+//   for (let row of res.rows) {
+//     console.log(JSON.stringify(row));
+//   }
+//   client.end();
+// });
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
