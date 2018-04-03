@@ -56,7 +56,8 @@ passport.deserializeUser((id, cb) => {
 /*------------------Useful queries------------------*/
 
 //DATABASE FILL CODE
-
+//Uncomment this block -------------------------------
+/*
 //Drop data from users and userstocks
 
 //Drop table users
@@ -107,6 +108,9 @@ client.query("INSERT INTO users (fname, lname, email, password, AVkey) VALUES ('
 client.query("INSERT INTO userstocks (email, stockticker, numstocks, algorithm, params, enabled) VALUES ('jwbhvb@mst.edu','AMD','40','Beta','highrisk','1'), ('JC1209@mail.com','WBT','40','Beta','highrisk','1'), ('nicetry@gmail.com','BEN','40','Beta','lowrisk','1'), ('tennisyo@mail.com','OBLN','40','Beta','lowrisk','1'), ('choochewchewer@mail.com','COWNZ','40','Beta','highrisk','1'), ('non@yahoo.com','DMLP','40','Beta','highrisk','1'), ('ok@mail.com','AFST','40','Beta','highrisk','1'), ('tasty@mail.com','RRD','40','Beta','lowrisk','1'), ('lookup@mail.com','MTFB','40','Beta','highrisk','1'), ('missing@gmail.com','EPAM','40','Beta','highrisk','1'), ('funny@mail.com','VIA','40','Beta','highrisk','1'), ('brutus@gmail.com','AMD','40','Beta','highrisk','1'), ('penny@gmail.com','WBT','40','Beta','highrisk','1'), ('penn@gmail.com','BEN','40','Beta','lowrisk','1'), ('mill@mail.com','OBLN','40','Beta','highrisk','1'), ('forpresident@gmail.com','COWNZ','40','Beta','highrisk','1'), ('forpresident@gmail.com','DMLP','40','Beta','highrisk','1'), ('bannana@gmail.com','AFST','40','Beta','highrisk','1'), ('choochewchewer@mail.com','RRD','40','Beta','highrisk','1'), ('choochewchewer@mail.com','MTFB','40','Beta','highrisk','1'), ('choochewchewer@mail.com','EPAM','40','Beta','highrisk','1'), ('choochewchewer@mail.com','VIA','40','Beta','highrisk','1')", (err,res) => {
    console.log("Block of userstocks added to database.");
 });
+*/
+
+//End of fill block -------------------------------
 
 // Alter users table to have id column
 // client.query("ALTER TABLE users DROP PRIMARY KEY", (err, res) => {
