@@ -55,45 +55,58 @@ passport.deserializeUser((id, cb) => {
 
 /*------------------Useful queries------------------*/
 
+//DATABASE FILL CODE
+
 //Drop data from users and userstocks
 
 //Drop table users
-// client.query("DROP TABLE users;", (err,res) => {
-//   console.log("users dropped.");
-// });
+client.query("DROP TABLE users;", (err,res) => {
+   console.log("users dropped.");
+});
 
 
-//Drop table userstocks
 
-// client.query("DROP TABLE userstocks;", (err,res) => {
-//   console.log("userstocks dropped.");
-// });
+//Drop table userstock
+client.query("DROP TABLE userstocks;", (err,res) => {
+   console.log("userstocks dropped.");
+});
 
+//Drop table usersettings
+client.query("DROP TABLE usersettings;", (err,res) => { 
+   console.log("usersettings dropped.");
+});
 
 //Make table users
-// client.query("CREATE TABLE users (id bigserial, fname varchar, lname varchar, email varchar UNIQUE, password varchar, AVkey varchar);", (err,res) => {
-//   console.log("users created");
-// });
-
+client.query("CREATE TABLE users (id bigserial, fname varchar, lname varchar, email varchar UNIQUE, password varchar, AVkey varchar, PRIMARY KEY(id, email));", (err,res) => {
+    console.log("users created");
+});
 
 
 //Make table userstocks
-// client.query("CREATE TABLE userstocks (id int, email varchar, stockticker varchar, numstocks int, algorithm varchar, params varchar, enabled bit, PRIMARY KEY(id), FOREIGN KEY(email) REFERENCES users(email));", (err,res) => {
-//   console.log("userstocks created");
-// });
+client.query("CREATE TABLE userstocks (id SERIAL, email varchar, stockticker varchar, numstocks int, algorithm varchar, params varchar, enabled bit, PRIMARY KEY(id), FOREIGN KEY(email) REFERENCES users(email));", (err,res) => {
+console.log("userstocks created");
+});
 
+//Make table usersettings
+//add to this as settings are developed
+client.query("CREATE TABLE usersettings (id int, settingblob varchar, PRIMARY KEY(id), FOREIGN KEY(email) REFERENCES users(email));", (err,res) => {
+console.log("usersettings created");
+});
 
 //Insert into users
-// client.query("INSERT INTO users (fname, lname, email, password, AVkey) VALUES ('Adam','Bagsby','bob@gmail.com','apple123', 'CJWPUA7R3VDJNLV0')", (err,res) => {
-//   console.log("user added to database.");
-// });
+client.query("INSERT INTO users (fname, lname, email, password, AVkey) VALUES ('Adam','Bagsby','bob2@gmail.com','apple123', 'CJWPUA7R3VDJNLV0'), ('John','Cena','JC1209@mail.com','pass1', 'CJWPUA7R3VDJNLV0'), ('Helen','Keller','nicetry@gmail.com','password', 'CJWPUA7R3VDJNLV0'), ('Serena','Williams','tennisyo@mail.com','tennis1', 'CJWPUA7R3VDJNLV0'), ('Thomas','Thetrain','choochewchewer@mail.com','sirtophatsux', 'CJWPUA7R3VDJNLV0'), ('Arnold','Schwartz','governor@california.gov','illbeme', 'CJWPUA7R3VDJNLV0'), ('Pete','Karl','whodisguy@mail.com','123badpass', 'CJWPUA7R3VDJNLV0'), ('Larry','David','bannana@gmail.com','curbyourpass', 'CJWPUA7R3VDJNLV0'), ('Pablo','Picasso','painted@mail.com','picksout', 'CJWPUA7R3VDJNLV0'), ('Freddie','Mercury','notanelement@mail.com','fredhelium', 'CJWPUA7R3VDJNLV0'), ('Ron','Paul','forpresident@gmail.com','ididntgetit', 'CJWPUA7R3VDJNLV0'), ('Danielle','Steel','mill@mail.com','steelmill', 'CJWPUA7R3VDJNLV0'), ('George','Washington','penn@gmail.com','weorgegash', 'CJWPUA7R3VDJNLV0'), ('Abraham','Lincoln','penny@gmail.com','worthless', 'CJWPUA7R3VDJNLV0'), ('Alexander','Thegreat','brutus@gmail.com','sendyocomplaints', 'CJWPUA7R3VDJNLV0'), ('Tim','Gaffigan','funny@mail.com','whodis', 'CJWPUA7R3VDJNLV0'), ('Jesse','Jackson','missing@gmail.com','stolen', 'CJWPUA7R3VDJNLV0'), ('Galileo','Galilei','lookup@mail.com','nosepas', 'CJWPUA7R3VDJNLV0'), ('Natalie','Portman','tasty@mail.com','plant', 'CJWPUA7R3VDJNLV0'), ('Frank','Sinatra','ok@mail.com','sing', 'CJWPUA7R3VDJNLV0'), ('Stephenie','Meyer','non@yahoo.com','write', 'CJWPUA7R3VDJNLV0')", (err,res) => {
+   console.log("Block of users added to database.");
+});
 
+client.query("INSERT INTO users (fname, lname, email, password, AVkey) VALUES ('Adam','Bagsby','bob@gmail.com','apple123', 'CJWPUA7R3VDJNLV0')", (err,res) => {
+   console.log("user added to database.");
+});
 
 
 //Insert into userstocks
-// client.query("INSERT INTO userstocks (id, email, stockticker, numstocks, algorithm, params, enabled) VALUES ('2','jwbhvb@mst.edu','AMD','40','Beta','highrisk','1')", (err,res) => {
-//   console.log("userstocks added to database.");
-// });
+client.query("INSERT INTO userstocks (email, stockticker, numstocks, algorithm, params, enabled) VALUES ('jwbhvb@mst.edu','AMD','40','Beta','highrisk','1'), ('JC1209@mail.com','WBT','40','Beta','highrisk','1'), ('nicetry@gmail.com','BEN','40','Beta','lowrisk','1'), ('tennisyo@mail.com','OBLN','40','Beta','lowrisk','1'), ('choochewchewer@mail.com','COWNZ','40','Beta','highrisk','1'), ('non@yahoo.com','DMLP','40','Beta','highrisk','1'), ('ok@mail.com','AFST','40','Beta','highrisk','1'), ('tasty@mail.com','RRD','40','Beta','lowrisk','1'), ('lookup@mail.com','MTFB','40','Beta','highrisk','1'), ('missing@gmail.com','EPAM','40','Beta','highrisk','1'), ('funny@mail.com','VIA','40','Beta','highrisk','1'), ('brutus@gmail.com','AMD','40','Beta','highrisk','1'), ('penny@gmail.com','WBT','40','Beta','highrisk','1'), ('penn@gmail.com','BEN','40','Beta','lowrisk','1'), ('mill@mail.com','OBLN','40','Beta','highrisk','1'), ('forpresident@gmail.com','COWNZ','40','Beta','highrisk','1'), ('forpresident@gmail.com','DMLP','40','Beta','highrisk','1'), ('bannana@gmail.com','AFST','40','Beta','highrisk','1'), ('choochewchewer@mail.com','RRD','40','Beta','highrisk','1'), ('choochewchewer@mail.com','MTFB','40','Beta','highrisk','1'), ('choochewchewer@mail.com','EPAM','40','Beta','highrisk','1'), ('choochewchewer@mail.com','VIA','40','Beta','highrisk','1')", (err,res) => {
+   console.log("Block of userstocks added to database.");
+});
 
 // Alter users table to have id column
 // client.query("ALTER TABLE users DROP PRIMARY KEY", (err, res) => {
